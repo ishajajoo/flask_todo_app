@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+    <div class="container">
+        <h2>Update ToDo</h2>
+        <form action = "/modify/{{todo.id}}/" method="POST">
+            <table class="cont">
+                <tbody>
+                    <input type="hidden" name="id" value="{{ todo.id }}">
+                    <tr>
+                        <b><label for="content">Update Todo </label></b>
+                    </tr>
+                    <tr>
+                        <input type="textbox" rows="2" class="form-control" name="content" id = "content" value = "{{todo.content}}" placeholder="ToDo task"></input>
+                    </tr>
+                    <tr>
+                        <b><label for="desc">ToDo description</label></b>
+                    </tr>
+                    <tr>
+                        <input type="textbox" class="form-control" name="desc" placeholder="ToDo Description" value="{{todo
+                        .desc}}"></input>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <b><label for="degree">Degree</label></b>
+                        </td>
+                        <tr>
+                        <td>
+                            {% if todo.degree == "Important" %}
+                            <input id="degree-0" name="degree" required type="radio" value="Important" checked />
+                            {% else %}
+                            <input id="degree-0" name="degree" required type="radio" value="Important" />
+                            {% endif %}
+                            <label for="degree-0">Important</label>
+                        </td>
+                        <td>
+                            {% if todo.degree == "Unimportant" %}
+                            <input id="degree-1" name="degree" required type="radio" value="Unimportant" checked>
+                            {% else %}
+                            <input id="degree-1" name="degree" required type="radio" value="Unimportant">
+                            {% endif %}
+                            <label for="degree-1">Unimportant</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><button onclick="redirect()" type="submit" class="btn btn-primary" >Update</button>
+                    </tr>
+            </table>
+        </form>
+        {% endblock body %}

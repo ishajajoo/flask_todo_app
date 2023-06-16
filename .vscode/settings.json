@@ -1,3 +1,7 @@
 {
-    "mdb.shell": "mongo"
+    "mdb.shell": "mongo",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "python.formatting.provider": "none"
 }
