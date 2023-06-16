@@ -36,7 +36,9 @@
                     </tr>
             </table>
         </form>
+
         <div class="container">
+
         <h2>Your ToDos</h2>
         <table class="table" id = "t1">
             <thead>
@@ -58,13 +60,17 @@
                     <td>{{todo.degree}}</td>
                     <td>{{todo.date_created}}</td>
                     <td>
-                        <a href = "/delete/{{todo._id}}/" type = "button" onclick = "confirm('Are you sure to delete')" class = "btn btn-dark me-1">Delete</button>
-                        <a href = "/modify/{{todo._id}}/" type = "button" class = "btn btn-info">Modify</button>
-                
+                        <a href = "/delete/{{todo._id}}/" type = "button" onclick = "confirm('Are you sure to delete'); myFunco()" class = "btn btn-dark me-1">Delete</button>
+                        <a href = "/update/{{todo._id}}/" type = "button" class = "btn btn-info">Update</button>
                     </td>
                 {% endfor %}
             </tbody>
         </table>
+        <script>
+            function myFunco(){
+                alert("ToDo deleted !")
+            }
+        </script>
     </div>
     </div>
 {% endblock body %}

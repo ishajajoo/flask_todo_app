@@ -29,23 +29,26 @@ def delete(id):
     todos.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
 
-@app.route('/modify/<id>/', methods = ['GET', 'POST'])
+@app.route('/update/<id>/', methods = ['GET', 'POST'])
 def modify(id):
     if request.method == 'POST':
         content = request.form['content']
         desc = request.form['desc']
-        # degree = request.form['degree']
-        # time = datetime.datetime.utcnow()
+        degree = request.form['degree']
+        time = datetime.datetime.utcnow()
         todo = todos.find_one({"_id": ObjectId(id)})
         todos.update_one({"_id": ObjectId(id)}, {"$set": {
             "content": content,
-            "desc": desc
+            "desc": desc,
+            "degree": degree,
+            "time": time
         }})
 
         return redirect("/")
-
-    todo = todos.find_one({"_id": ObjectId(id)})
+    if request.method == 'GET':
+        todo = todos.find_one({"_id": ObjectId(id)})
     return render_template('update.html', todo=todo)
+
 
 if __name__=="__main__":
     app.run(debug=True, port = 8000)

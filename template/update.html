@@ -3,10 +3,9 @@
 {% block body %}
     <div class="container">
         <h2>Update ToDo</h2>
-        <form action = "/modify/{{todo.id}}/" method="POST">
+        <form action = "/update/{{todo._id}}/" method="POST">
             <table class="cont">
                 <tbody>
-                    <input type="hidden" name="id" value="{{ todo.id }}">
                     <tr>
                         <b><label for="content">Update Todo </label></b>
                     </tr>
@@ -43,10 +42,16 @@
                             <label for="degree-1">Unimportant</label>
                         </td>
                     </tr>
-
                     <tr>
-                        <td><button onclick="redirect()" type="submit" class="btn btn-primary" >Update</button>
+                        <td><button onclick="myFunc()" type="submit" class="btn btn-primary" id = "btn_update" >Update</button>                   
                     </tr>
+                        </tr>
+                        </tbody>
+                    <script>
+                        function myFunc(){
+                            alert("ToDo updated !")
+                        }
+                    </script>
             </table>
         </form>
         {% endblock body %}
